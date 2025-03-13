@@ -18,16 +18,17 @@ app.use(cors());
 app.use("/healthcheck", (req, res) => {
     res.status(200).send("ok");
   });
-app.use(`/api/${process.env.API_V1}/todo`, todoRoutes);
+// app.use(`/api/${process.env.API_V1}/todo`, todoRoutes);
 
+app.listen(PORT,()=> console.log('Server is running on port ${PORT}'));
 //APP initialization
-connectDB();
-mongoose.connection.once('open', () => {
-    app.listen(PORT, () => {
-      console.log(`Server running on port ${PORT}`);
-    });
-});
+//connectDB();
+//mongoose.connection.once('open', () => {
+//    app.listen(PORT, () => {
+//      console.log(`Server running on port ${PORT}`);
+//    });
+//});
 //APP connection error
-mongoose.connection.on("error", (error) => {
-    console.log("Error connecting to db: ", error);
-  });
+//mongoose.connection.on("error", (error) => {
+//    console.log("Error connecting to db: ", error);
+//  });
