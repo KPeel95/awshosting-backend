@@ -14,13 +14,17 @@ app.use(express.json());
 const PORT = process.env.PORT || 8080;
 app.use(cors());
 
+//Serve static assets in public
+app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/healthcheck", (req, res) => {
     res.status(200).send("ok");
   });
+
 // app.use(`/api/${process.env.API_V1}/todo`, todoRoutes);
 
 app.listen(PORT,()=> console.log('Server is running on port ${PORT}'));
+
 //APP initialization
 //connectDB();
 //mongoose.connection.once('open', () => {
