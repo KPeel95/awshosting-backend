@@ -5,6 +5,7 @@ const app = express();
 const connectDB = require('./config/db.js');
 const mongoose = require("mongoose");
 const cors = require("cors");
+const path = require ("path");
 
 //ROUTE IMPORTS
 const todoRoutes = require('./routes/todo');
