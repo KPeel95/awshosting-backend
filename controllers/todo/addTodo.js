@@ -1,15 +1,13 @@
 const Todo = require('../../models/todo');
 
 const addTodo = async (req, res) => {
+
     try {
-        const { task } = req.body;
-        const todo = new Todo({
-        task
-        });
-        await todo.save();
+        const newTodo = await Todo.create(req.body);
         res.status(200).json({
         success: true,
-        data: todo
+        output: newTodo,
+        data: req.body
         });
     } catch (error) {
         res.status(500).json({

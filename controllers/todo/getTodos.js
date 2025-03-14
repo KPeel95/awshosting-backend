@@ -2,7 +2,8 @@ const Todo = require('../../models/todo');
 
 const getTodos = async (req, res) => {
     try {
-        const todos = await Todo.find();
+        const todos = await Todo.find({});
+        console.log('Fetched todos: ', todos);  
         res.status(200).json({
         success: true,
         data: todos
