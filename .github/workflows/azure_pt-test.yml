@@ -28,6 +28,9 @@ jobs:
           npm install
           npm run build --if-present
 
+      - name: Check current directory
+        run: pwd
+
       - name: Build Svelte frontend
         run: |
           cd svelte-app
