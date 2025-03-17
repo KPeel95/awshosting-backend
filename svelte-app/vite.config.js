@@ -1,10 +1,8 @@
 import { defineConfig } from 'vite';
+import path from 'path';
 
 export default defineConfig({
   build: {
-    outDir: '../public',  // Specify the output directory
-    rollupOptions: {
-      input: './index.html',  // Ensure Vite knows where to find the entry point
-    },
+    outDir: path.resolve(__dirname,'../public'),  // Specify the output directory
   }
 });
