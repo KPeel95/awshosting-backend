@@ -10,32 +10,40 @@ const path = require ("path");
 //ROUTE IMPORTS
 const todoRoutes = require('./routes/todo');
 
-//APP SETTINGS
-app.use(express.json());
-const PORT = process.env.PORT || 8080;
+// APP SETTINGS
 app.use(cors());
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
-//Serve static assets in public
-app.use(express.static(path.join(__dirname, "public")));
+const PORT = process.env.PORT || 8080;
 
+// Define the /healthcheck route before static files
 app.use("/healthcheck", (req, res) => {
-    res.status(200).send("ok");
-  });
+  console.log('Healthcheck successful');
+  console.log(`Request made to ${req.url}`);
+  res.status(200).send("ok");
+});
 
+// Define your API routes
 app.use(`/api/${process.env.API_V1}/todo`, todoRoutes);
 
-//app.listen(PORT,()=> console.log('Server is running on port ${PORT}'));
+//Serve static files (important: this should be after API routes)
+app.use(express.static(path.resolve(__dirname, 'public')));
 
-//APP initialization
+// Catch-all route for frontend (index.html)
+app.get('*', (req, res) => {
+  res.sendFile(path.resolve(__dirname, 'public', 'index.html'));
+});
+
+// APP initialization and connection to DB
 connectDB();
-
 mongoose.connection.once('open', () => {
    app.listen(PORT, () => {
      console.log(`Server running on port ${PORT}`);
    });
 });
 
-//APP connection error
+// APP connection error
 mongoose.connection.on("error", (error) => {
    console.log("Error connecting to db: ", error);
  });

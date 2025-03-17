@@ -4,7 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "build": "cd svelte-app && rollup -c --bundleConfigAsCjs",
+    "dev:frontend": "cd svelte-app && npx rollup -c --bundleConfigAsCjs -w",
+    "dev:backend": "node index.js",
+    "start": "concurrently \"npm run dev:frontend\" \"npm run dev:backend\""
   },
   "author": "",
   "license": "ISC",
@@ -15,5 +18,17 @@
     "mongoose": "^8.0.1",
     "nodemon": "^3.0.1",
     "path": "^0.12.7"
+  },
+  "devDependencies": {
+    "@rollup/plugin-json": "^6.1.0",
+    "concurrently": "^6.2.2",
+    "nodemon": "^3.1.4",
+    "rollup": "^2.79.1",
+    "rollup-plugin-css-only": "^4.5.2",
+    "rollup-plugin-livereload": "^2.0.5",
+    "rollup-plugin-node-builtins": "^2.1.2",
+    "rollup-plugin-node-globals": "^1.4.0",
+    "rollup-plugin-svelte": "^7.2.2",
+    "terser": "^5.31.6"
   }
 }

@@ -27,7 +27,13 @@ jobs:
         run: |
           npm install
           npm run build --if-present
-          npm run test --if-present
+
+      - name: Build Svelte frontend
+        run: |
+          cd svelte-app
+          npm install
+          npm run build 
+          cp -r dist ../public
 
       - name: Zip artifact for deployment
         run: zip release.zip ./* -r
@@ -57,6 +63,9 @@ jobs:
       - name: Unzip artifact for deployment
         run: unzip release.zip
       
+      - name: Install Dependencies
+        run: npm install --omit=dev
+
       - name: Login to Azure
         uses: azure/login@v2
         with:
