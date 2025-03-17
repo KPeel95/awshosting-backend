@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "cd svelte-app && rollup -c --bundleConfigAsCjs",
-    "dev:frontend": "cd svelte-app && npx rollup -c --bundleConfigAsCjs -w",
+    "build": "vite build",
+    "dev:frontend": "cd svelte-app && vite",
     "dev:backend": "node index.js",
     "start": "concurrently \"npm run dev:frontend\" \"npm run dev:backend\""
   },
@@ -22,8 +22,8 @@
   "devDependencies": {
     "@rollup/plugin-commonjs": "^24.0.0",
     "@rollup/plugin-json": "^6.1.0",
-    "@rollup/plugin-terser": "^0.4.0",
     "@rollup/plugin-node-resolve": "^15.0.0",
+    "@rollup/plugin-terser": "^0.4.0",
     "concurrently": "^6.2.2",
     "nodemon": "^3.1.4",
     "rollup": "^2.79.1",
@@ -32,6 +32,7 @@
     "rollup-plugin-node-builtins": "^2.1.2",
     "rollup-plugin-node-globals": "^1.4.0",
     "rollup-plugin-svelte": "^7.2.2",
-    "terser": "^5.31.6"
+    "terser": "^5.31.6",
+    "vite": "^6.2.2"
   }
 }
