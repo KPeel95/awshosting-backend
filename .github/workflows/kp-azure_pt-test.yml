@@ -65,6 +65,9 @@ jobs:
           tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_DA91BF99C0974FD9B20656620EC6F7F7 }}
           subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_F667EE959E6B41FF9229285D3ADEADD5 }}
 
+      - name: Clean wwwroot before deployment
+        run: rm -rf *
+
       - name: 'Deploy to Azure Web App'
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v3
