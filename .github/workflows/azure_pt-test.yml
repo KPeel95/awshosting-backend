@@ -60,7 +60,7 @@ jobs:
         run: unzip release.zip
       
       - name: Install Dependencies
-        run: npm install --omit=dev
+        run: cd server && npm install --omit=dev && npm run install-svelte --omit=dev
 
       - name: Login to Azure
         uses: azure/login@v2
