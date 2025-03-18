@@ -1,43 +1,47 @@
 <script>
-	let name = "Svelte";
-	let count = 0;
-  
-	const increment = () => {
-	  count += 1;
-	};
-  
-	const decrement = () => {
-	  count -= 1;
-	};
-  </script>
-  
-  <style>
-	h1 {
-	  color: #ff3e00;
-	}
-	button {
-	  background-color: #ff3e00;
-	  color: white;
-	  border: none;
-	  padding: 10px 20px;
-	  cursor: pointer;
-	}
-	button:hover {
-	  background-color: #ff5733;
-	}
-	p {
-	  font-size: 1.2rem;
-	}
-  </style>
-  
-  <main>
-	<h1>Welcome to the Svelte App!</h1>
-	<p>This is a basic page.</p>
-	
-	<div>
-	  <p>Hello, {name}!</p>
-	  <button on:click={increment}>Increment</button>
-	  <button on:click={decrement}>Decrement</button>
-	  <p>Count: {count}</p>
-	</div>
-  </main>
+  import svelteLogo from './assets/svelte.svg'
+  import viteLogo from '/vite.svg'
+  import Counter from './lib/Counter.svelte'
+</script>
+
+<main>
+  <div>
+    <a href="https://vite.dev" target="_blank" rel="noreferrer">
+      <img src={viteLogo} class="logo" alt="Vite Logo" />
+    </a>
+    <a href="https://svelte.dev" target="_blank" rel="noreferrer">
+      <img src={svelteLogo} class="logo svelte" alt="Svelte Logo" />
+    </a>
+  </div>
+  <h1>Vite + Svelte</h1>
+
+  <div class="card">
+    <Counter />
+  </div>
+
+  <p>
+    Check out <a href="https://github.com/sveltejs/kit#readme" target="_blank" rel="noreferrer">SvelteKit</a>, the official Svelte app framework powered by Vite!
+  </p>
+
+  <p class="read-the-docs">
+    Click on the Vite and Svelte logos to learn more, especially if you are clever like me
+  </p>
+</main>
+
+<style>
+  .logo {
+    height: 6em;
+    padding: 1.5em;
+    will-change: filter;
+    transition: filter 300ms;
+  }
+  .logo:hover {
+    filter: drop-shadow(0 0 2em #646cffaa);
+  }
+  .logo.svelte:hover {
+    filter: drop-shadow(0 0 2em #ff3e00aa);
+  }
+  .read-the-docs {
+    color: #888;
+  }
+</style>

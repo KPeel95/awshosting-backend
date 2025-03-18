@@ -6,7 +6,7 @@ name: Build and deploy Node.js app to Azure Web App - pt-test
 on:
   push:
     branches:
-      - azure
+      - kp-azure
   workflow_dispatch:
 
 jobs:
@@ -23,19 +23,13 @@ jobs:
         with:
           node-version: '20.x'
 
+            
       - name: npm install, build, and test
         run: |
+          cd server
           npm install
-          npm run build --if-present
-
-      - name: Check current directory
-        run: pwd
-
-      - name: Build Svelte frontend
-        run: |
-          cd svelte-app
-          npm install
-          npm run build 
+          npm run install-svelte
+          npm run build
 
       - name: Zip artifact for deployment
         run: zip release.zip ./* -r

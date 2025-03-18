@@ -1,10 +1,7 @@
-import { defineConfig } from 'vite';
+import { defineConfig } from 'vite'
+import { svelte } from '@sveltejs/vite-plugin-svelte'
 
+// https://vite.dev/config/
 export default defineConfig({
-  build: {
-    outDir: '../public',  // Specify the output directory
-    rollupOptions: {
-      input: './index.html',  // Ensure Vite knows where to find the entry point
-    },
-  }
-});
+  plugins: [svelte()],
+})

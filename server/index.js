@@ -28,11 +28,11 @@ app.use("/healthcheck", (req, res) => {
 app.use(`/api/${process.env.API_V1}/todo`, todoRoutes);
 
 //Serve static files (important: this should be after API routes)
-app.use(express.static(path.resolve(__dirname, 'public')));
+app.use(express.static(path.resolve(__dirname,'../', 'svelte-app','dist')));
 
 // Catch-all route for frontend (index.html)
 app.get('*', (req, res) => {
-  res.sendFile(path.resolve(__dirname, 'public', 'index.html'));
+  res.sendFile(path.resolve(__dirname,'../', 'svelte-app', 'dist','index.html'));
 });
 
 // APP initialization and connection to DB
