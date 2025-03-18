@@ -8,8 +8,8 @@
     "build": "cd ../svelte-app && vite build",
     "dev:frontend": "cd ../svelte-app && vite",
     "dev:backend": "node index.js",
-    "dev": "concurrently \"npm run dev:frontend\" \"npm run dev:backend\"", // Runs front and back on separate ports, for development
-    "start": "node index.js" // Runs the server, remember to build the front end first, or it will not work, FOR PRODUCTION
+    "dev": "concurrently \"npm run dev:frontend\" \"npm run dev:backend\"", 
+    "start": "node index.js" 
   },
   "author": "",
   "license": "ISC",
