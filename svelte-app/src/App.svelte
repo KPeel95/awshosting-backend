@@ -2,6 +2,23 @@
   import svelteLogo from './assets/svelte.svg'
   import viteLogo from '/vite.svg'
   import Counter from './lib/Counter.svelte'
+  import { onMount } from "svelte";
+
+  let message = "";
+
+  async function callServer() {
+    try {
+      const response = await fetch("http://172.187.194.129:8000/hello");
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+      const data = await response.json();
+      message = data.message;
+    } catch (error) {
+      message = "Error: Could not reach the server.";
+      console.error(error);
+    }
+  }
 </script>
 
 <main>
@@ -26,6 +43,14 @@
   <p class="read-the-docs">
     Click on the Vite and Svelte logos to learn more, especially if you are clever like me
   </p>
+
+<div>
+  <p>Call our R server</p>
+  <button on:click={callServer}>Click me</button>
+  {#if message}
+    <p>{message}</p>
+  {/if}
+</div>
 </main>
 
 <style>
