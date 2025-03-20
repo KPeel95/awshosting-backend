@@ -71,5 +71,3 @@ jobs:
         with:
           app-name: 'pt-test'
           slot-name: 'Production'
-          package: /home/site/wwwroot
-          
