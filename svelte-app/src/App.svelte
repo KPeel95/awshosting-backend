@@ -30,18 +30,14 @@
       <img src={svelteLogo} class="logo svelte" alt="Svelte Logo" />
     </a>
   </div>
-  <h1>Vite + Svelte</h1>
+  <h1>Vite + Svelte Powered Front End</h1>
 
   <div class="card">
     <Counter />
   </div>
 
   <p>
-    Check out <a href="https://github.com/sveltejs/kit#readme" target="_blank" rel="noreferrer">SvelteKit</a>, the official Svelte app framework powered by Vite!
-  </p>
-
-  <p class="read-the-docs">
-    Click on the Vite and Svelte logos to learn more, especially if you are clever like me
+   This deployed site calls calls an R server and a CosmosDB Server as an imitiation of the real world application we are looking to build.
   </p>
 
 <div>
