@@ -5,7 +5,7 @@
   import { onMount } from "svelte";
 
   let message = "";
-
+  let cosmosOutput = "";
   async function callServer() {
     try {
       const response = await fetch("http://172.187.194.129:8000/hello");
@@ -19,6 +19,24 @@
       console.error(error);
     }
   }
+
+async function callCosmos(){
+  try {
+    const response = await fetch("http://pt-test-ckauhqducne8f9ce.uksouth-01.azurewebsites.net/api/v1/todo");
+    if (!response.ok) {
+      throw new Error("Network response was not ok");
+    }
+    cosmosOutput = await response.json();
+    cosmosOutput = JSON.stringify(cosmosOutput);
+} catch (error) {
+    cosmosOutput = "Error: Could not reach the server.";
+    console.error(error);
+  }
+}
+
+  onMount(() => {
+  });
+
 </script>
 
 <main>
@@ -47,6 +65,13 @@
     <p>{message}</p>
   {/if}
 </div>
+
+<div>
+  <p>Call our CosmosDB </p>
+  <button on:click={callCosmos}>Click me</button>
+    <p>{cosmosOutput}</p>
+</div>
+
 </main>
 
 <style>
